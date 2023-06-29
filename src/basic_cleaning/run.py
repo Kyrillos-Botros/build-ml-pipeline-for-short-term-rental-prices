@@ -37,6 +37,11 @@ def go(args):
     logger.info("Converting lst_review col to be in datetime format")
     df['last_review'] = pd.to_datetime(df['last_review'])
 
+    # Removing any point exists out of the range
+    logger.info("Removing any point exists out of the range for long. and lat.")
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     # Create a temporary directory to save the output artifact
     with tempfile.TemporaryDirectory() as tmp_dir:
         temp_path = os.path.join(tmp_dir, args.output_artifact)

@@ -37,7 +37,7 @@ entry_points:
         type: string
 
     command: >-
-      python run.py --trainval_artifact {trainval_artifact} \
+        python run.py --trainval_artifact {trainval_artifact} \
                     --val_size {val_size} \
                     --random_seed {random_seed} \
                     --stratify_by {stratify_by} \
